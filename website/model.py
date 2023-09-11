@@ -11,21 +11,35 @@ from flask_sqlalchemy import SQLAlchemy
 # Base = declarative_base()
 
 
-    
+class Teacher(db.Model, UserMixin):
+    __tablename__ = 'teachers'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String)
+    email = db.Column(db.String)
+    institution_id = db.Column(db.Integer, db.ForeignKey('institutions.id'))
+    institution = db.relationship('Institution', back_populates='teachers')
+    role = db.Column(db.String(20), nullable=False, default='teacher')  
+
 class Student(db.Model, UserMixin):
     __tablename__ = 'students'
 
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(150), unique=True, nullable=False)  # Set nullable to False to enforce email presence
-    password = db.Column(db.String(150), nullable=False)  # Set nullable to False to enforce password presence
-    name = db.Column(db.String(150), nullable=False)  # Set nullable to False to enforce first_name presence
-    gender = db.Column(db.String(10), nullable=False)  # Adding gender field (assuming a string field with max length of 10)
-    address = db.Column(db.String(200), nullable=True)  # Adding address field (nullable as it might not always be provided)
-    country = db.Column(db.String(100), nullable=True)  # Adding country field (nullable as it might not always be provided)
-    dob = db.Column(db.String(10), nullable=False)  # Adding dob field (assuming a string field with max length of 10)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
+    name = db.Column(db.String(150), nullable=False)
+    gender = db.Column(db.String(10), nullable=False)
+    address = db.Column(db.String(200), nullable=True)
+    country = db.Column(db.String(100), nullable=True)
+    dob = db.Column(db.String(10), nullable=False)
     verified = db.Column(db.Boolean, default=False)
     projects = db.relationship('Project', back_populates='student')
-    
+    role = db.Column(db.String(20), nullable=False, default='student')
+    institution_id = db.Column(db.Integer, db.ForeignKey('institutions.id'))  # New field
+    institution = db.relationship('Institution', backref='students')  # New relationship
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teachers.id'))  # New field
+    teachers = db.relationship('Teacher', backref='students')  # New relationship
+    db.relationship('Institution', secondary='institution_student_association', back_populates='students')
 
 
 class Project(db.Model):
@@ -37,28 +51,13 @@ class Project(db.Model):
     student_id = db.Column(db.Integer, db.ForeignKey('students.id'))
     student = db.relationship('Student', back_populates='projects')
 
-class Institution(db.Model):
+
+
+class Institution(db.Model,UserMixin):
     __tablename__ = 'institutions'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     location = db.Column(db.String)
     teachers = db.relationship('Teacher', back_populates='institution')
-
-class Teacher(db.Model):
-    __tablename__ = 'teachers'
-
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String)
-    email = db.Column(db.String)
-    institution_id = db.Column(db.Integer, db.ForeignKey('institutions.id'))
-    students = db.relationship('Student', secondary='teacher_student_association', back_populates='teachers')
-    institution = db.relationship('Institution', back_populates='teachers')
-
-teacher_student_association = Table(
-    'teacher_student_association',
-    db.metadata,
-    db.Column('teacher_id', db.Integer, db.ForeignKey('teachers.id')),
-    db.Column('student_id', db.Integer, db.ForeignKey('students.id'))
-)
-
+    role = db.Column(db.String(20), nullable=False, default='institution')
