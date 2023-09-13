@@ -18,7 +18,7 @@ def home():
     #     return render_template('student_login.html')
     # else:
         # flash('You must be logged in to view this page.')
-    return render_template('student_login.html')
+    return render_template('index.html')
 
 
 @views.route('/add_project', methods=['GET', 'POST'])

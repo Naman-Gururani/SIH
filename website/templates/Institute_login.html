@@ -5,14 +5,14 @@
     <meta name="description" content="SIH">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Institute Login</title>
-    <link rel="stylesheet" href="/website/static/css/Institute_login.css">
+    <link rel="stylesheet" href="static/css/Institute_login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="container">
         <div class="login-box">
             <div class="image-container1">
-                <img src="/website/static/images/University.png" alt="Login Image" class="logo">
+                <img src="static/images/University.png" alt="Login Image" class="logo">
             </div>
             <h2>Institute Login</h2>
             <form id="login-form">
@@ -27,12 +27,12 @@
                     <input type="password" id="password" placeholder="Password" required>
                 </div>
                 <button id="button" type="submit">Login</button>
-                <h6>Don't have an account? <a href="website\templates\Institute_signup.html" target="_blank">Sign up!</a></h6>
+                <h6>Don't have an account? <a href="{{url_for('auth.signup_institution')}}" >Sign up!</a></h6>
             </form>
         </div>
     </div>
     <div class="image-container">
-        <img src="/website/static/images/img (2).png" alt="Login Image">
+        <img src="static/images/img (2).png" alt="Login Image">
     </div>
 </body>
 </html>
