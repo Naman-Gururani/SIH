@@ -72,8 +72,16 @@ def verify_students():
 
     # Get all unverified students for the current institution
     students = Student.query.filter_by(institution_id=current_user.id, verified=False).all()
-
     return render_template('verify_students.html', students=students)
+    
+@views.route('/institute_profile', methods=['GET', 'POST'])
+@login_required
+def institute_profile():
+    if current_user.role != 'institution':
+        flash('Only institutions can verify students.')
+        return redirect(url_for('views.home'))
+    return render_template('institute_profile.html')
+
 
 
 

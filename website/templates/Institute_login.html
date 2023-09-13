@@ -15,16 +15,16 @@
                 <img src="static/images/University.png" alt="Login Image" class="logo">
             </div>
             <h2>Institute Login</h2>
-            <form id="login-form">
+            <form id="login-form" action="{{url_for('auth.login_institution')}}" method="POST">
                 <div class="form-group">
                     <i class="fa fa-user icon"></i>
                     <label for="email"></label>
-                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="email" name="email" id="email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group">
                     <i class="fa fa-key icon"></i>
                     <label for="password"></label>
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
                 <button id="button" type="submit">Login</button>
                 <h6>Don't have an account? <a href="{{url_for('auth.signup_institution')}}" >Sign up!</a></h6>

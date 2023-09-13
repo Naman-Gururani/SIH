@@ -64,7 +64,7 @@ def login_institution():
 
         if institution and check_password_hash(institution.password, password):
             login_user(institution)
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.institute_profile'))
 
         flash('Invalid username or password')
 
