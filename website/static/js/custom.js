@@ -11,7 +11,7 @@ getYear();
 
 function myMap() {
     var mapProp = {
-        center: new google.maps.LatLng(40.712775, -74.005973),
+        center: new google.maps.LatLng(28.7978732,77.5402259,17),
         zoom: 18,
     };
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);

@@ -16,7 +16,9 @@ class Teacher(db.Model, UserMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
-    email = db.Column(db.String)
+    email    = db.Column(db.String)
+    password = db.Column(db.String(150), nullable=False)
+    registration_number = db.Column(db.String(20),nullable = False)
     institution_id = db.Column(db.Integer, db.ForeignKey('institutions.id'))
     institution = db.relationship('Institution', back_populates='teachers')
     role = db.Column(db.String(20), nullable=False, default='teacher')  
@@ -28,9 +30,9 @@ class Student(db.Model, UserMixin):
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     name = db.Column(db.String(150), nullable=False)
+    registration_number = db.Column(db.String(20),nullable = False)
     gender = db.Column(db.String(10), nullable=False)
     address = db.Column(db.String(200), nullable=True)
-    country = db.Column(db.String(100), nullable=True)
     dob = db.Column(db.String(10), nullable=False)
     verified = db.Column(db.Boolean, default=False)
     projects = db.relationship('Project', back_populates='student')
@@ -57,6 +59,8 @@ class Institution(db.Model,UserMixin):
     __tablename__ = 'institutions'
 
     id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(150), unique=True, nullable=False)
+    password = db.Column(db.String(150), nullable=False)
     name = db.Column(db.String)
     location = db.Column(db.String)
     teachers = db.relationship('Teacher', back_populates='institution')

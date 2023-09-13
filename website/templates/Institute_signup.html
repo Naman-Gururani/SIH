@@ -5,35 +5,61 @@
     <meta name="description" content="SIH">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Institute Signup</title>
-    <link rel="stylesheet" href="/website/static/css/Institute_signup.css">
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+    crossorigin="anonymous"
+  />    
+    <link rel="stylesheet" href="static/css/Institute_signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    
+{% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %} {% if category ==
+    'error' %}
+    <div class="alert alert-danger alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% else %}
+    <div class="alert alert-success alter-dismissable fade show" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    {% endif %} {% endfor %} {% endif %} {% endwith %}
+<body>
+
     <div class="container">
         <div class="signup-box">
             <div class="image-container1">
-                <img src="/website/static/images/University.png" alt="Signup Image" class="logo">
+                <img src="static/images/University.png" alt="Signup Image" class="logo">
             </div>
             <h2>Institute Signup</h2>
-            <form id="signup-form">
+            <form id="signup-form" action="{{url_for('auth.signup_institution')}}" method="POST">
                 <div class="form-group">
                     <label for="email"></label>
-                    <input type="email" id="email" placeholder="Email Address" required>
+                    <input type="email" name="email" id="email" placeholder="Email Address" required>
                 </div>
                 <div class="form-group">
                     <label for="password"></label>
-                    <input type="password" id="password" placeholder="Password" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="form-group">
                     <label for="name"></label>
-                    <input type="text" id="name" placeholder="Name" required>
+                    <input type="text" name="name" id="name" placeholder="Name" required>
                 </div>
                 <div class="form-group">
                     <label for="location"></label>
-                    <input type="text" id="location" placeholder="Location" required>
+                    <input type="text" name = "location"id="location" placeholder="Location" required>
                 </div>
                 <button id="button" type="submit">Register</button>
-                <h6>Already have an account? <a href="website\templates\Institute_login.html" target="_blank">Log In!</a></h6>
+                <h6>Already have an account? <a href="{{url_for('auth.login_institution')}}" target="_blank">Log In!</a></h6>
             </form>
         </div>
     </div>
