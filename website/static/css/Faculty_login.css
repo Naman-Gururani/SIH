@@ -140,4 +140,28 @@ body {
     width: 120px;
     height: 115px;
 }
+.flash {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; /* Change as needed */
+    color: white; /* Change as needed */
+    padding: 16px;
+    border-radius: 4px;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+    animation: slideDown 2s forwards;
+    }
 
+    @keyframes slideDown {
+        0% {
+            top: -50px;
+        }
+        10%, 90% {
+            top: 0;
+        }
+        100% {
+            top: -50px;
+        }
+    }
