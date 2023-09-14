@@ -7,8 +7,22 @@
     <title>Faculty Login</title>
     <link rel="stylesheet" href="static/css/Faculty_login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash" id="flashMessage">{{ messages[0] }}</div>
+                    <script>
+                    $(document).ready(function() {
+                        $('#flashMessage').show(); // Show the flash message
+                        setTimeout(function() {
+                            $('#flashMessage').hide(); // Hide the flash message after 2 seconds
+                        }, 2000);
+                    });
+                    </script>
+                {% endif %}
+                {% endwith %}
     <div class="container">
         <div class="login-box">
             <div class="image-container1">
