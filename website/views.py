@@ -77,9 +77,13 @@ def verify_students():
 @views.route('/institute_profile', methods=['GET', 'POST'])
 @login_required
 def institute_profile():
+    
     if current_user.role != 'institution':
         flash('Only institutions can verify students.')
+        print ("calledin")
         return redirect(url_for('views.home'))
+    print ("called")
+    print(current_user.id)
     return render_template('institute_profile.html')
 
 

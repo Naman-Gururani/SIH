@@ -14,7 +14,7 @@ from flask_sqlalchemy import SQLAlchemy
 class Teacher(db.Model, UserMixin):
     __tablename__ = 'teachers'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement = True)
     name = db.Column(db.String)
     email    = db.Column(db.String)
     password = db.Column(db.String(150), nullable=False)
@@ -26,7 +26,7 @@ class Teacher(db.Model, UserMixin):
 class Student(db.Model, UserMixin):
     __tablename__ = 'students'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,autoincrement = True)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     name = db.Column(db.String(150), nullable=False)
@@ -58,7 +58,7 @@ class Project(db.Model):
 class Institution(db.Model,UserMixin):
     __tablename__ = 'institutions'
 
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True,autoincrement = True)
     email = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(150), nullable=False)
     name = db.Column(db.String)

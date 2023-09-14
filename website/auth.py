@@ -63,6 +63,7 @@ def login_institution():
         institution = Institution.query.filter_by(email=email).first()
 
         if institution and check_password_hash(institution.password, password):
+            print(institution)
             login_user(institution)
             return redirect(url_for('views.institute_profile'))
 
