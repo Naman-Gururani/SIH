@@ -28,6 +28,21 @@ def create_app():
     
     with app.app_context():
         db.create_all()
+        # new_student = Student(id = 2001,email="dummy", password="passowrd", name="dummy",registration_number = "registration_number", institution_id=, gender="gender", address="address", dob="dob")
+        # db.session.add(new_student)
+        
+        
+        # new_teacher = Teacher(id = 3001,email='email', password="passowrd", name='name',registration_number='registration_number',institution_id='institution')
+        # db.session.add(new_teacher)
+       
+        # new_institution = Institution(id =4001,email='email', password="passowrd", name='name', location='loc(ation')
+        # db.session.add(new_institution)
+        
+
+        # db.session.commit()
+        
+        
+        # Commit the changes to the database
         
 
     login_manager = LoginManager()
