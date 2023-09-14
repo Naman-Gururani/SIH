@@ -24,6 +24,17 @@ body {
     background-color: #f5f5f5;
 }
 
+#topLeftButton {
+    position: absolute;
+    border: none;
+    background: none;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    top: 0;
+    left: 0;
+}
+
 .login-box {
     width: 600px;
     height: 500px;
