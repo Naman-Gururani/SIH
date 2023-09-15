@@ -50,6 +50,8 @@ body {
 .heading_container h2 {
   position: relative;
   font-weight: bold;
+  padding-top: 0px;
+  padding-bottom: 10px;
 }
 
 .heading_container h2 span {
@@ -429,6 +431,7 @@ a:focus {
 .service_section .box .detail-box h5 {
   font-weight: bold;
   position: relative;
+  padding-bottom: 40px;
 }
 
 .service_section .box .detail-box a {
