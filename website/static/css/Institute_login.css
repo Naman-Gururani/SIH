@@ -26,6 +26,8 @@ body {
 
 #topLeftButton {
     position: absolute;
+    margin-left: 16px;
+    margin-top: 12px;
     border: none;
     background: none;
     padding: 10px;
