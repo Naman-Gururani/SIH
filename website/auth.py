@@ -8,7 +8,11 @@ from flask_login import login_user, login_required, logout_user, current_user,Lo
 auth = Blueprint('auth', __name__)
 
 
-
+@auth.route('/logout')
+def logout():
+    logout_user()
+    # Redirect to the login page or wherever you prefer
+    return redirect(url_for('views.home'))
 # Student Login
 @auth.route('/login_student', methods=['GET', 'POST'])
 def login_student():
@@ -28,7 +32,7 @@ def login_student():
             if check_password_hash(student.password, password):
                 print("in3")
                 login_user(student)
-                return redirect(url_for('views.home'))
+                return redirect(url_for('views.project_feed'))
 
         flash('Invalid username or password')
         print("in4")
@@ -43,10 +47,11 @@ def login_teacher():
         password = request.form.get('password')
 
         teacher = Teacher.query.filter_by(email=email).first()
-
+        print(teacher)
         if teacher and check_password_hash(teacher.password, password):
+            print("fafasf")
             login_user(teacher)
-            return redirect(url_for('views.home'))
+            return redirect(url_for('views.project_feed'))
 
         flash('Invalid username or password')
 
