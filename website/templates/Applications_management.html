@@ -27,29 +27,44 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Example Student Applications -->
+                <!-- Loop through student applications fetched from the backend -->
+                {% for student in students %}
                 <tr>
-                    <td>John Doe</td>
-                    <td>johndoe@example.com</td>
-                    <td>RA125879</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.registration_number }}</td>
                     <td>
-                        <button class="btn btn-success">Approve</button>
-                        
+                        <button class="btn btn-success verify-button" data-student-id="{{ student.id }}">Verify</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>Jane Smith</td>
-                    <td>janesmith@example.com</td>
-                    <td>RA123456</td>
-                    <td>
-                        <button class="btn btn-success">Approve</button>
-                        
-                    </td>
-                </tr>
-                
-            </tbody>
+                {% endfor %}
+            </tbody>    
         </table>
     </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $(".verify-button").click(function() {
+            var studentId = $(this).data("student-id");
+            
+            // Send an AJAX request to your Flask backend to verify the student
+            $.ajax({
+                type: "POST",
+                url: "/verify_students",  // Update the URL to match your Flask route
+                data: { student_id: studentId },
+                success: function(response) {
+                    // Handle the response from the backend (e.g., show a success message)
+                    alert(response.message);
+                },
+                error: function() {
+                    // Handle any errors that occur during the AJAX request
+                    alert("An error occurred while verifying the student.");
+                }
+            });
+        });
+    });
+</script>
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
