@@ -364,6 +364,9 @@ a:focus {
 .service_section {
   text-align: center;
 }
+.row{
+  justify-content: center;
+}
 
 .service_section .heading_container {
   -webkit-box-align: center;

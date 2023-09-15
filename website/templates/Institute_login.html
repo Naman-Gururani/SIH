@@ -7,8 +7,16 @@
     <title>Institute Login</title>
     <link rel="stylesheet" href="static/css/Institute_login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <list rel="stylesheet" href="static/css/alerts.css"> -->
+    
+  
 </head>
+
 <body>
+    <button id="topLeftButton">
+        <a href="website\templates\index.html" style="color:rgb(255, 255, 255); text-decoration: none;">SIH</a>
+    </button>
     <div class="container">
         <div class="login-box">
             <div class="image-container1">
@@ -27,6 +35,19 @@
                     <input type="password" name="password" id="password" placeholder="Password" required>
                 </div>
                 <button id="button" type="submit">Login</button>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="flash" id="flashMessage">{{ messages[0] }}</div>
+                    <script>
+                    $(document).ready(function() {
+                        $('#flashMessage').show(); // Show the flash message
+                        setTimeout(function() {
+                            $('#flashMessage').hide(); // Hide the flash message after 2 seconds
+                        }, 2000);
+                    });
+                    </script>
+                {% endif %}
+                {% endwith %}
                 <h6>Don't have an account? <a href="{{url_for('auth.signup_institution')}}" >Sign up!</a></h6>
             </form>
         </div>
@@ -35,4 +56,5 @@
         <img src="static/images/img (2).png" alt="Login Image">
     </div>
 </body>
+
 </html>

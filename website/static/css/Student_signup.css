@@ -24,6 +24,17 @@ body {
     background-color: #f5f5f5;
 }
 
+#topLeftButton {
+    position: absolute;
+    border: none;
+    background: none;
+    padding: 10px;
+    color: white;
+    font-size: 24px;
+    top: 0;
+    left: 0;
+}
+
 .signup-box {
     width: 600px;
     height: 800px;
@@ -121,4 +132,30 @@ body {
     width: 120px;
     height: 115px;
 }
+
+.flash {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #f44336; /* Change as needed */
+    color: white; /* Change as needed */
+    padding: 16px;
+    border-radius: 4px;
+    z-index: 1000;
+    display: none; /* Hidden by default */
+    animation: slideDown 2s forwards;
+    }
+
+    @keyframes slideDown {
+        0% {
+            top: -50px;
+        }
+        10%, 90% {
+            top: 0;
+        }
+        100% {
+            top: -50px;
+        }
+    }
 
