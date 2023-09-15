@@ -51,7 +51,7 @@ def add_project():
         flash('Project added successfully!')
         return redirect(url_for('views.home'))
 
-    return render_template('add_project.html')
+    return render_template('Project.html')
 
 
 
@@ -83,6 +83,17 @@ def verify_students():
     
     
     
+@views.route('/teacher_profile', methods=['GET', 'POST'])
+@login_required
+def teacher_profile():
+    
+    if current_user.role != 'teacher':
+        flash('Not Accessible')
+        # print ("calledin")
+        return redirect(url_for('views.home'))
+    return render_template('Faculty_profile.html')
+
+
 @views.route('/institute_profile', methods=['GET', 'POST'])
 @login_required
 def institute_profile():

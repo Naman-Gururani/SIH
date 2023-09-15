@@ -13,7 +13,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = 'hjshjhdjah kjshkjdhjs'
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
-    app.config['UPLOAD_FOLDER'] = '/path/to/upload/folder' 
+    app.config['UPLOAD_FOLDER'] = '/static/projects' 
     db.init_app(app)
     # app.config['FLASH_MESSAGE_DURATION'] = 2
      
