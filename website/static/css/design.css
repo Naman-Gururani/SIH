@@ -50,8 +50,7 @@ body {
 
     .container {
       margin-top: 100px;
-      border: 2px solid black;
-      box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+      
     }
     /* .upload{
         display: flex;
