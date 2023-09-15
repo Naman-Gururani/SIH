@@ -50,6 +50,7 @@ class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     project_name = db.Column(db.String)
     readme_file_path = db.Column(db.String)
+    description = db.Column(db.String)
     student_id = db.Column(db.Integer, db.ForeignKey('students.id'))
     student = db.relationship('Student', back_populates='projects')
 
